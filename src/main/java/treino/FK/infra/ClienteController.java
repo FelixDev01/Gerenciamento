@@ -14,6 +14,7 @@ import treino.FK.domain.Cliente;
 
 @RestController
 @RequestMapping("/clientes")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ClienteController {
 
 
@@ -42,7 +43,7 @@ public class ClienteController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<ClienteResponseDTO> atualizar(@PathVariable Long id, @Valid ClienteUpdateDTO dto){
+    public ResponseEntity<ClienteResponseDTO> atualizar(@PathVariable Long id, @RequestBody @Valid ClienteUpdateDTO dto){
         ClienteResponseDTO clienteAtualizado = service.atualizar(id, dto);
         return ResponseEntity.ok(clienteAtualizado);
     }
